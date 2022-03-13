@@ -1,14 +1,16 @@
- 
+//IMPORTS  
 const path = require("path")
 const session = require("express-session")
 const express = require("express")
+const constants = require("./constant/constants")
+const routers = require("./router/routers")
+
+//CREATE APP
 const app = express()
 
-
-
-//view Engine/templating configuration
+//VIEW ENGINE CONFIG
 const nunjucks = require("nunjucks");
-nunjucks.configure(path.resolve(__dirname,'view'),{
+nunjucks.configure(path.resolve(__dirname,constants.VIEW_DIR),{
   express:app,
   autoscape:true,
   noCache:false,
@@ -17,22 +19,20 @@ nunjucks.configure(path.resolve(__dirname,'view'),{
 
 //SESSION CONFIG
 app.use(session({
-  secret:"this is a secret",
+  secret:constants.SECRET,
   saveUninitialized: false,
   resave: false
 }));
 
 //STATIC CONFIG
-app.use(express.static(path.join(__dirname,"/public")));
+app.use(express.static(path.join(__dirname,constants.STATIC_DIR)))
 
+//ROUTER CONFIG
+app.use(constants.HOME_URL,routers.HOME);
+app.use(constants.CONTACT_URL,routers.CONTACT);
+app.use(constants.ABOUT_URL,routers.ABOUT);
 
-
-
-app.use("/",(req,res)=>{
-  res.render("index.html",{});
-});
-
-
+//SERVER CONFIG
 var PORT = 9000;
 app.listen(process.env.PORT | PORT,(err)=>{
   if(!err){
