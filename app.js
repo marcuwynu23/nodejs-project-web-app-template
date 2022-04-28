@@ -4,7 +4,7 @@ const session = require("express-session")
 const express = require("express")
 const constants = require("./constant/constants")
 const routers = require("./router/routers")
-
+const morgan = require('morgan')
 //CREATE APP
 const app = express()
 
@@ -16,6 +16,9 @@ nunjucks.configure(path.resolve(__dirname,constants.VIEW_DIR),{
   noCache:false,
   watch:true
 });
+
+//LOGGER CONFIG
+app.use(morgan("dev",{}))
 
 //SESSION CONFIG
 app.use(session({
@@ -34,7 +37,7 @@ app.use(constants.ABOUT_URL,routers.ABOUT);
 
 //SERVER CONFIG
 var PORT = 9000;
-app.listen(process.env.PORT | PORT,(err)=>{
+app.listen(process.env.PORT || PORT,(err)=>{
   if(!err){
     console.log(`listening on port ${PORT}`);
   }else{
