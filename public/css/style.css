@@ -24,7 +24,7 @@ body {
 }
  
 .sidebar a.active {
-  background-color: #04AA6D;
+  background-color: #121212;
   color: white;
 }
 
@@ -34,9 +34,10 @@ body {
 }
 
 div.root-container {
+  background-color: #a9a9a9;
   margin-left: 200px;
   padding: 1px 16px;
-  height: 1000px;
+  height: 100%;
 }
 
 .main-container{
@@ -45,7 +46,6 @@ div.root-container {
 .container{
   padding: 12px 12px;
   margin: 12px 12px;
-  border: solid 1px lightgrey;
 }
 
 
@@ -58,7 +58,10 @@ div.root-container {
     position: relative;
   }
   .sidebar a {float: left;}
-  div.root-container {margin-left: 0;}
+  div.root-container {
+    margin-left: 0;
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 400px) {
