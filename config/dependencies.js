@@ -1,7 +1,12 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 const path = require("path")
 const session = require("express-session")
 const nunjucks = require("nunjucks")
 const morgan = require('morgan')
+const mongooseDBConnect = require("./db")
 
 
 const config = (app, express, constants, dirname) => {
@@ -18,12 +23,19 @@ const config = (app, express, constants, dirname) => {
 	//LOGGER CONFIG
 	app.use(morgan("dev", {}))
 
+
+	//DATABASE CONFIG
+	mongooseDBConnect()
+
+
 	//SESSION CONFIG
 	app.use(session({
 		secret: constants.SECRET,
 		saveUninitialized: false,
 		resave: false
 	}));
+
+
 
 
 

@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "jest": "^28.0.2",

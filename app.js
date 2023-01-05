@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 //IMPORTS  
 const express = require("express")
 const constants = require('./constants/constants')

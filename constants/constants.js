@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2023 
+ *   All rights reserved.
+ */
 module.exports = {
   ctx: {
     TITLE: "Node.js Project Template",
