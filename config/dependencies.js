@@ -7,7 +7,7 @@ const session = require("express-session")
 const nunjucks = require("nunjucks")
 const morgan = require('morgan')
 const mongooseDBConnect = require("./db")
-
+var flash = require('connect-flash');
 
 const config = (app, express, constants, dirname) => {
 	//VIEW ENGINE CONFIG
@@ -23,6 +23,11 @@ const config = (app, express, constants, dirname) => {
 	//LOGGER CONFIG
 	app.use(morgan("dev", {}))
 
+
+	//FLASK CONFIG
+	app.use(express.cookieParser('keyboard cat'));
+	app.use(express.session({ cookie: { maxAge: 60000 } }));
+	app.use(flash());
 
 	//DATABASE CONFIG
 	mongooseDBConnect()
